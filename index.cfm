@@ -57,7 +57,7 @@
                     </cfoutput>
                     <a href="tests.cfm" class="btn btn-primary" style="float:right;">Go to tests</a>
                 </div>
-                <label id="error" class="label label-danger" style="display: none;">Rent period must be between 30 minutes and 4 weeks.<label>
+                <label id="error" class="label label-danger" style="display: none;">Rent period must be between 1 hour and 4 weeks.<label>
             </div>
         </div>
     </body>

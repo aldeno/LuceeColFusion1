@@ -29,7 +29,7 @@ function saveBoatTypeData() {
 function calculateRent(){
 
   var differeceInMilliseconds = new Date($('#txtRentTo').val()) - new Date($('#txtRentFrom').val());
-  if(differeceInMilliseconds < 1 || differeceInMilliseconds > 2419200000){
+  if(differeceInMilliseconds < 3540000 || differeceInMilliseconds > 2419200000){
     $('#error').show();
   }
   else{
