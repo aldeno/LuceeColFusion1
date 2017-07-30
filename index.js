@@ -25,3 +25,15 @@ function saveBoatTypeData() {
     }
   });
 }
+
+function calculateRent(){
+
+  var differeceInMilliseconds = new Date($('#txtRentTo').val()) - new Date($('#txtRentFrom').val());
+  if(differeceInMilliseconds < 1 || differeceInMilliseconds > 2419200000){
+    $('#error').show();
+  }
+  else{
+    $('#error').hide();
+    $('#form').submit();
+  }
+}
