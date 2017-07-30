@@ -64,6 +64,7 @@
               <input type="hidden" name="submitted" value="1" />
             </form>
           </cfoutput>
+          <a href="tests.cfm" class="btn btn-primary" style="float:right;">Go to tests</a>
           </div>
         </div></div>
   </body>

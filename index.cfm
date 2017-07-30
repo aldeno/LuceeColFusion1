@@ -29,7 +29,6 @@
             <cfquery datasource="modulparkag" name="availableBoats">
             SELECT * FROM Boat
             </cfquery>
-
             <div class="panel panel-primary">
                 <div class="panel-heading">Logged user: <cfoutput>#Session.username#</cfoutput></div>
                 <div class="panel-body">
@@ -56,6 +55,7 @@
                             <lable>You have to pay: <cfoutput query = RS1>#Result#</cfoutput> Euro</label>
                         </form>
                     </cfoutput>
+                    <a href="tests.cfm" class="btn btn-primary" style="float:right;">Go to tests</a>
                 </div>
             </div>
         </div>
