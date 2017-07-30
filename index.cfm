@@ -6,6 +6,9 @@
 <html>
     <head>
         <title>Lucee page</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+        <script src="index.js"></script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     </head>
     <body>

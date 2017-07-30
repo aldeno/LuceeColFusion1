@@ -10,6 +10,9 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+    <script src="index.js"  type="text/javascript"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
@@ -35,7 +38,7 @@
             <form id="form" class="form" action="" method="POST">
               <div class="form-group">
                   <label for="ddlBoat">Boat Type:</label>
-                  <select class="form-control" id="ddlBoat" name="boatTypeId">
+                  <select class="form-control" id="ddlBoat" onchange="loadBoatData()"name="boatTypeId">
                       <cfloop query="boatTypes">
                           <option value="#boatTypes.Id#" <cfif boatTypeId EQ boatTypes.Id>selected="selected"</cfif>>#boatTypes.Name#</option>
                       </cfloop>
@@ -57,7 +60,7 @@
                 <label for="discount">Discount after n days:</label>
                 <input type="text" class="form-control" id="discountAfter" name="discountAfter" value="#discountAfter#">
               </div>
-                <button type="submit" class="btn btn-default">Save</button>
+                <button type="button" onclick="saveBoatTypeData()" class="btn btn-default">Save</button>
               <input type="hidden" name="submitted" value="1" />
             </form>
           </cfoutput>

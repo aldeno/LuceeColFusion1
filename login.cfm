@@ -6,10 +6,13 @@
   <head>
     <meta charset="utf-8">
     <title>Login page</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js"
+        type="text/javascript"></script>
+    <script src="index.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    //TODO -- REMIDIATE SQL INJECTION SECURITY RISK
+    <!--TODO -- REMIDIATE SQL INJECTION SECURITY RISK-->
     <cfquery datasource="modulparkag" name="user">
       SELECT TOP 1 U.Username, U.FirstName, U.LastName, UT.Name
       FROM [User] U INNER JOIN UserType UT

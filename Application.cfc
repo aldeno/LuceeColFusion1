@@ -6,11 +6,10 @@ component{
 
 		if(FindNoCase("login.cfm", GetPageContext().GetRequest().getRequestURL().toString()) == 0){
 			if(!StructKeyExists(Session, 'username')){
-				writedump('ima');
 				location("login.cfm", "false", "301");
 			}
 		}
-		
+
 	}
 
 	function OnSessionStart(){
