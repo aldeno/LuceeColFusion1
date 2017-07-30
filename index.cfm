@@ -51,12 +51,14 @@
                                 <input type="datetime-local" class="form-control" id="txtRentTo" name="rentTo" value="#rentTo#"/>
                             </div>
                             <input type="hidden" name="submitted" value="1" />
-                            <button type="button" onclick="calculateRent()" class="btn btn-default">Calculate</button>
-                            <lable>You have to pay: <cfoutput query = RS1>#Result#</cfoutput> Euro</label>
+                            <input type="hidden" name="userId" id="userId" value="#Session.UserId#">
+                            <button type="button" onclick="calculateRent()" id="btnCalculateRent" class="btn btn-default">Calculate</button>
+                            <button type="button" onclick="saveCalculation()" id="btnSaveCalculation" class="btn btn-default">Save Calculation</button>
                         </form>
+                        <div><lable>You have to pay: <cfoutput query = RS1>#Result#</cfoutput> Euro</label></div>
                     </cfoutput>
-                    <a href="tests.cfm" class="btn btn-primary" style="float:right;">Go to tests</a>
                 </div>
+                <a href="tests.cfm" class="btn btn-primary" style="float:right;">Go to tests</a>
                 <label id="error" class="label label-danger" style="display: none;">Rent period must be between 1 hour and 4 weeks.<label>
             </div>
         </div>

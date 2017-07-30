@@ -22,23 +22,38 @@
     <cfreturn boat>
   </cffunction>
   <cffunction name="updateBoatType" access="remote" returntype="any" httpmethod="PUT">
-      <cfset requestBody = deserializeJSON(toString( getHttpRequestData().content)) />
+    <cfset requestBody=deserializeJSON(toString( getHttpRequestData().content))/>
 
-      <cfquery name = "updateBoatTypes" datasource = "modulparkag">
-          UPDATE BoatType
-             SET PriceWeek = <cfqueryparam value="#requestBody.PriceWeek#" cfsqltype="CF_SQL_DECIMAL"/>,
-             PriceWeekend = <cfqueryparam value="#requestBody.PriceWeekend#" cfsqltype="CF_SQL_DECIMAL"/>
-           WHERE Id = <cfqueryparam value="#requestBody.BoatTypeId#" cfsqltype="CF_SQL_INTEGER"/>
-      </cfquery>
-      <cfquery name = "updateDiscountData" datasource = "modulparkag">
-        UPDATE D
-         SET D.DiscountRate = <cfqueryparam value="#requestBody.DiscountRate#" cfsqltype="CF_SQL_INTEGER"/>,
-          D.DiscountAfter = <cfqueryparam value="#requestBody.DiscountAfter#" cfsqltype="CF_SQL_INTEGER"/>
-         FROM Discount D
-         INNER JOIN BoatType BT
-         ON D.Id = BT.DiscountId
-         WHERE BT.Id = <cfqueryparam value="#requestBody.BoatTypeId#" cfsqltype="CF_SQL_INTEGER"/>
-      </cfquery>
-      <cfreturn true>
+    <cfquery name = "updateBoatTypes" datasource = "modulparkag">
+      UPDATE BoatType
+      SET PriceWeek = <cfqueryparam value="#requestBody.PriceWeek#" cfsqltype="CF_SQL_DECIMAL"/>
+      ,
+      PriceWeekend = <cfqueryparam value="#requestBody.PriceWeekend#" cfsqltype="CF_SQL_DECIMAL"/>
+      WHERE Id = <cfqueryparam value="#requestBody.BoatTypeId#" cfsqltype="CF_SQL_INTEGER"/>
+    </cfquery>
+    <cfquery name = "updateDiscountData" datasource = "modulparkag">
+      UPDATE D
+      SET D.DiscountRate = <cfqueryparam value="#requestBody.DiscountRate#" cfsqltype="CF_SQL_INTEGER"/>
+      ,
+      D.DiscountAfter = <cfqueryparam value="#requestBody.DiscountAfter#" cfsqltype="CF_SQL_INTEGER"/>
+      FROM Discount D
+      INNER JOIN BoatType BT
+      ON D.Id = BT.DiscountId
+      WHERE BT.Id = <cfqueryparam value="#requestBody.BoatTypeId#" cfsqltype="CF_SQL_INTEGER"/>
+    </cfquery>
+    <cfreturn true>
   </cffunction>
+
+  <cffunction name="saveCalculation" access="remote" returntype="any" httpmethod="POST">
+    <cfset requestBody=deserializeJSON(toString( getHttpRequestData().content))/>
+    <cfstoredproc procedure="InsertCalculation" datasource="modulparkag">
+
+      <cfprocparam cfsqltype="cf_sql_numeric" value="#requestBody.UserId#">
+      <cfprocparam cfsqltype="cf_sql_numeric" value="#requestBody.BoatId#">
+      <cfprocparam cfsqltype="cf_sql_timestamp" value="#requestBody.DateFrom#">
+      <cfprocparam cfsqltype="cf_sql_timestamp" value="#requestBody.DateTo#">
+    </cfstoredproc>
+    <cfreturn true>
+  </cffunction>
+
 </cfcomponent>

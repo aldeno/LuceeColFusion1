@@ -14,7 +14,7 @@
   <body>
     <!--TODO -- REMIDIATE SQL INJECTION SECURITY RISK-->
     <cfquery datasource="modulparkag" name="user">
-      SELECT TOP 1 U.Username, U.FirstName, U.LastName, UT.Name
+      SELECT TOP 1 U.Id, U.Username, U.FirstName, U.LastName, UT.Name
       FROM [User] U INNER JOIN UserType UT
       ON U.UserTypeId = UT.Id
       WHERE U.Username = <cfqueryparam value="#form.username#" cfsqltype="cf_sql_varchar" />
@@ -23,6 +23,7 @@
     <cfif user.RecordCount GT 0 AND (username IS NOT '' OR password IS NOT '')>
       <cfscript>
         Session.username = form.username;
+        Session.UserId = user.Id
         if(user.Name[1] == 'Owner'){
           location('owner.cfm');
         }
