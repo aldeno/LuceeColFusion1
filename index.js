@@ -1,3 +1,5 @@
+
+<!--Load data using RESTFUL service-->
 function loadBoatData() {
   $.get('/rest/app/restService/' + $('#ddlBoat').val(), function(data) {
     $("#priceWeekend").val(data.PRICEWEEKEND);
@@ -6,7 +8,7 @@ function loadBoatData() {
     $('#discountAfter').val(data.DISCOUNTAFTER);
   });
 }
-
+<!--Save data using RESTFUL service-->
 function saveBoatTypeData() {
   var data = {};
   data.BoatTypeId = $('#ddlBoat').val();
@@ -25,7 +27,7 @@ function saveBoatTypeData() {
     }
   });
 }
-
+<!--Validate form and submit the data if validation pass-->
 function calculateRent(){
 
   var differeceInMilliseconds = new Date($('#txtRentTo').val()) - new Date($('#txtRentFrom').val());
